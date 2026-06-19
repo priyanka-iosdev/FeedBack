@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct AppCompositionRoot: View {
+    
+    private let currentUser = AppUser(
+            id: "u1",
+            name: "Priyanka",
+            email: "priyanka@test.com",
+            role: .admin
+        )
+    
+       private let repository = FirebaseFeedbackRepository()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if currentUser.isAdmin {
+            AdminFeedbackView(viewModel: AdminFeedbackViewModel(fetchAllFeedbackUseCase: FetchAllFeedbackUseCase(repository: repository)))
+        } else {
+            MyFeedbackView(
+                viewModel: MyFeedbackViewModel(fetchMyFeedbackUseCases: FetchMyFeedbackUseCase(repository: repository), currentUser: currentUser)) {
+                    AddFeedbackViewModel(submitFeedbackUseCase: SubmitFeedbackUseCase(repository: repository), currentUser: currentUser)
+                }
+        }
     }
 }
 

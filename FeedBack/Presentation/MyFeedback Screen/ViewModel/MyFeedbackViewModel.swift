@@ -15,8 +15,25 @@ final class MyFeedbackViewModel {
     var errorMsg: String?
     var showAddSheet = false
     
+    private let fetchMyFeedbackUseCases: FetchMyFeedbackUseCase
+    private let currentUser: AppUser
+    
+    init(fetchMyFeedbackUseCases: FetchMyFeedbackUseCase, currentUser: AppUser) {
+        self.fetchMyFeedbackUseCases = fetchMyFeedbackUseCases
+        self.currentUser = currentUser
+    }
+    
     func load() {
         isLoading = true
         errorMsg = nil
+        
+        Task {
+            defer { isLoading = false }
+            do {
+                feedbackList = try await fetchMyFeedbackUseCases.execute(userId: currentUser.id)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
     }
 }

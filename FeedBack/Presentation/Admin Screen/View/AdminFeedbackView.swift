@@ -23,16 +23,16 @@ struct AdminFeedbackView: View {
                     content
                 }
             }
-        }
-        .navigationTitle("All feedback")
-        .onAppear {
-            viewModel.load()
+            .navigationTitle("All feedback")
+            .onAppear {
+                viewModel.load()
+            }
         }
     }
     
     private var filterBar: some View {
         HStack(alignment: .center, spacing: 8) {
-            Text("All FeedBack")
+            Text("Rating")
                 .font(DesignTokens.Font.headline)
             
             Spacer()
@@ -93,5 +93,5 @@ struct AdminFeedbackView: View {
 }
 
 #Preview {
-    AdminFeedbackView(viewModel: AdminFeedbackViewModel())
+    AdminFeedbackView(viewModel: AdminFeedbackViewModel(fetchAllFeedbackUseCase: FetchAllFeedbackUseCase(repository: FirebaseFeedbackRepository())))
 }

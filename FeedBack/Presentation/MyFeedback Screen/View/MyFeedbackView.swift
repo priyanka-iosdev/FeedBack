@@ -26,7 +26,8 @@ struct MyFeedbackView: View {
                     Spacer()
                 }
             }
-            .sheet(isPresented: $viewModel.showAddSheet) {
+            .onAppear { viewModel.load() }
+            .sheet(isPresented: $viewModel.showAddSheet, onDismiss: { viewModel.load() }) {
                 AddFeedbackView(viewModel: makeAddFeedbackViewModel())
             }
         }
@@ -92,5 +93,16 @@ struct MyFeedbackView: View {
 }
 
 #Preview {
-    MyFeedbackView(viewModel: MyFeedbackViewModel(), makeAddFeedbackViewModel: { AddFeedbackViewModel() })
+    MyFeedbackView(
+           viewModel: MyFeedbackViewModel(
+            fetchMyFeedbackUseCases: FetchMyFeedbackUseCase(repository: FirebaseFeedbackRepository()),
+               currentUser: AppUser(id: "u1", name: "Priyanka", email: "p@x.com", role: .user)
+           ),
+           makeAddFeedbackViewModel: {
+               AddFeedbackViewModel(
+                   submitFeedbackUseCase: SubmitFeedbackUseCase(repository: FirebaseFeedbackRepository()),
+                   currentUser: AppUser(id: "u1", name: "Priyanka", email: "p@x.com", role: .user)
+               )
+           }
+       )
 }

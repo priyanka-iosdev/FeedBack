@@ -19,9 +19,24 @@ final class AdminFeedbackViewModel {
         }
     }
     
+    private let fetchAllFeedbackUseCase: FetchAllFeedbackUseCase
+    
+    init(fetchAllFeedbackUseCase: FetchAllFeedbackUseCase) {
+        self.fetchAllFeedbackUseCase = fetchAllFeedbackUseCase
+    }
+    
     func load() {
         isLoading = true
         errorMessage = nil
+        
+        Task {
+            defer { isLoading = false }
+            do {
+                feedbackList = try await fetchAllFeedbackUseCase.fetchAllFeedback(moodFilter: selectedMoodFilter)
+            }  catch {
+                errorMessage = error.localizedDescription
+            }
+        }
         
     }
 }

@@ -117,6 +117,10 @@ struct AddFeedbackView: View {
 
 
 #Preview {
-    let vm = AddFeedbackViewModel()
-    AddFeedbackView(viewModel: vm)
+    AddFeedbackView(
+        viewModel: AddFeedbackViewModel(
+            submitFeedbackUseCase: SubmitFeedbackUseCase(repository: FirebaseFeedbackRepository()),
+            currentUser: AppUser(id: "u1", name: "Priyanka", email: "p@x.com", role: .user)
+        )
+    )
 }
