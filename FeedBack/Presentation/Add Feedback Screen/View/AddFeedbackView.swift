@@ -13,48 +13,59 @@ struct AddFeedbackView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack {
-            viewModel.background.ignoresSafeArea()
-            
-            VStack(spacing: 25) {
-                header
+        GeometryReader { geo in
+            ZStack {
+                viewModel.background.ignoresSafeArea()
                 
-                Text("Could you share your thoughts on the app? I'd really value your perspective.")
-                    .font(DesignTokens.Font.headline)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(viewModel.accent)
-                    .padding(.horizontal, 24)
-                
-                //MoodFaceView
-                
-                Text(viewModel.mood.label)
-                    .font(DesignTokens.Font.title)
-                    .foregroundStyle(viewModel.accent)
-                
-                moodSlider
-                    .padding(.horizontal, 8)
-                
-                
-                commentBox
-                    .padding(.horizontal, 8)
-                
-                if let error = viewModel.errorMessage {
-                    Text(error)
-                        .font(DesignTokens.Font.caption)
-                        .foregroundColor(DesignTokens.Color.error)
+                VStack(spacing: 25) {
+                    header
+                    
+                    Text("Could you share your thoughts on the app? I'd really value your perspective.")
+                        .font(DesignTokens.Font.headline)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(viewModel.accent)
+                        .padding(.horizontal, 24)
+                    
+                    MoodFaceView(
+                        mood: viewModel.mood,
+                        size: faceSize(for: geo),
+                        color: viewModel.accent
+                    )
+                    
+                    Text(viewModel.mood.label)
+                        .font(DesignTokens.Font.title)
+                        .foregroundStyle(viewModel.accent)
+                    
+                    moodSlider
+                        .padding(.horizontal, 8)
+                    
+                    
+                    commentBox
+                        .padding(.horizontal, 8)
+                    
+                    if let error = viewModel.errorMessage {
+                        Text(error)
+                            .font(DesignTokens.Font.caption)
+                            .foregroundColor(DesignTokens.Color.error)
+                    }
+                    
+                    Spacer()
+                    
                 }
-                
-                Spacer()
-                
+                .padding()
             }
-            .padding()
-        }
-        .animation(.easeInOut(duration: 0.3), value: viewModel.mood)
-        .alert("Thanks for your feedback!", isPresented: $viewModel.didSubmit) {
-            Button("Done") {
-                dismiss()
+            .animation(.easeInOut(duration: 0.3), value: viewModel.mood)
+            .alert("Thanks for your feedback!", isPresented: $viewModel.didSubmit) {
+                Button("Done") {
+                    dismiss()
+                }
             }
         }
+    }
+    
+    private func faceSize(for geo: GeometryProxy) -> CGFloat {
+        let proportional = geo.size.height * 0.13
+        return min(max(proportional, 70), 130)
     }
     
     private var header: some View {

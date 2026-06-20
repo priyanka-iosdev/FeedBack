@@ -17,7 +17,8 @@ struct FeedBackApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AppCompositionRoot()
+            //            AppCompositionRoot()
+            CoordinatorView()
         }
     }
 }

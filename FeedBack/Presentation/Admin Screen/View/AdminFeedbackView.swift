@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AdminFeedbackView: View {
     @State var viewModel: AdminFeedbackViewModel
+    var onLogout: () -> Void = {}
     
     var body: some View {
         NavigationStack {
@@ -24,6 +25,14 @@ struct AdminFeedbackView: View {
                 }
             }
             .navigationTitle("All feedback")
+            .toolbar {
+                Button {
+                    onLogout()
+                } label: {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                        .foregroundColor(DesignTokens.MoodColor.accent(for: .neutral))
+                }
+            }
             .onAppear {
                 viewModel.load()
             }

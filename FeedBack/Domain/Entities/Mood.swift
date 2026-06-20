@@ -22,12 +22,4 @@ enum Mood: Int, CaseIterable, Codable {
             return "GOOD"
         }
     }
-    
-    var emoji: String {
-        switch self {
-        case .bad: return "😟"
-        case .neutral: return "😐"
-        case .good: return "🙂"
-        }
-    }
 }

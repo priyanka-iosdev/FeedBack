@@ -12,27 +12,38 @@ struct FeedbackCardView: View {
     var showAuthour: Bool = true
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                if showAuthour {
-                    Text(feedback.userName)
-                        .font(DesignTokens.Font.label)
-                        .foregroundColor(DesignTokens.MoodColor.accent(for: feedback.mood))
+        HStack(alignment: .center, spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(DesignTokens.MoodColor.background(for: feedback.mood))
+                
+                MoodFaceView(mood: feedback.mood,
+                             size: 22,
+                             color:DesignTokens.MoodColor.accent(for: feedback.mood)
+                )
+            }
+            .frame(width: 40, height: 40)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    if showAuthour {
+                        Text(feedback.userName)
+                            .font(DesignTokens.Font.label)
+                            .foregroundColor(DesignTokens.MoodColor.accent(for: feedback.mood))
+                    }
+                    
+                    Spacer()
+                    
+                    Text(feedback.createdAt.relativeDescription)
+                        .font(DesignTokens.Font.caption)
+                        .foregroundStyle(DesignTokens.Color.textSecondary)
                 }
                 
-                Spacer()
-                
-                Text(feedback.mood.emoji)
-                    .font(.system(size: 18))
+                Text(feedback.comment)
+                    .font(DesignTokens.Font.body)
+                    .foregroundStyle(DesignTokens.Color.textPrimary)
             }
             
-            Text(feedback.comment)
-                .font(DesignTokens.Font.body)
-                .foregroundStyle(DesignTokens.Color.textPrimary)
-            
-            Text(feedback.createdAt.relativeDescription)
-                .font(DesignTokens.Font.caption)
-                .foregroundStyle(DesignTokens.Color.textSecondary)
         }
         .padding(DesignTokens.Layout.cardPadding)
         .frame(maxWidth: .infinity, alignment: .leading)

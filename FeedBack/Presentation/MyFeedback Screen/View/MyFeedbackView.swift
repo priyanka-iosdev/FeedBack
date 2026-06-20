@@ -10,7 +10,7 @@ import SwiftUI
 struct MyFeedbackView: View {
     @State var viewModel: MyFeedbackViewModel
     let makeAddFeedbackViewModel: () -> AddFeedbackViewModel
-    
+    var onLogout: () -> Void = {}
     
     var body: some View {
         NavigationStack {
@@ -24,6 +24,16 @@ struct MyFeedbackView: View {
                     content
                     
                     Spacer()
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        onLogout()
+                    } label: {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                            .foregroundColor(DesignTokens.MoodColor.accent(for: .neutral))
+                    }
                 }
             }
             .onAppear { viewModel.load() }
@@ -94,15 +104,15 @@ struct MyFeedbackView: View {
 
 #Preview {
     MyFeedbackView(
-           viewModel: MyFeedbackViewModel(
+        viewModel: MyFeedbackViewModel(
             fetchMyFeedbackUseCases: FetchMyFeedbackUseCase(repository: FirebaseFeedbackRepository()),
-               currentUser: AppUser(id: "u1", name: "Priyanka", email: "p@x.com", role: .user)
-           ),
-           makeAddFeedbackViewModel: {
-               AddFeedbackViewModel(
-                   submitFeedbackUseCase: SubmitFeedbackUseCase(repository: FirebaseFeedbackRepository()),
-                   currentUser: AppUser(id: "u1", name: "Priyanka", email: "p@x.com", role: .user)
-               )
-           }
-       )
+            currentUser: AppUser(id: "u1", name: "Priyanka", email: "p@x.com", role: .user)
+        ),
+        makeAddFeedbackViewModel: {
+            AddFeedbackViewModel(
+                submitFeedbackUseCase: SubmitFeedbackUseCase(repository: FirebaseFeedbackRepository()),
+                currentUser: AppUser(id: "u1", name: "Priyanka", email: "p@x.com", role: .user)
+            )
+        }
+    )
 }
