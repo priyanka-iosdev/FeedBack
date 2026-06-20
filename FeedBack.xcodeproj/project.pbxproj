@@ -13,7 +13,18 @@
 		B3E361CC2FE593C600D163EE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3E361CB2FE593C600D163EE /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B37C505F2FE6DA3D00F0FFCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3F81B822FE40D6600F9ED42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3F81B892FE40D6600F9ED42;
+			remoteInfo = FeedBack;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		B37C505B2FE6DA3D00F0FFCB /* FeedBackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedBackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F81B8A2FE40D6600F9ED42 /* FeedBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -28,6 +39,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B37C505C2FE6DA3D00F0FFCB /* FeedBackTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FeedBackTests;
+			sourceTree = "<group>";
+		};
 		B3F81B8C2FE40D6600F9ED42 /* FeedBack */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -39,6 +55,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B37C50582FE6DA3D00F0FFCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3F81B872FE40D6600F9ED42 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F81B8C2FE40D6600F9ED42 /* FeedBack */,
+				B37C505C2FE6DA3D00F0FFCB /* FeedBackTests */,
 				B3F81B8B2FE40D6600F9ED42 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F81B8A2FE40D6600F9ED42 /* FeedBack.app */,
+				B37C505B2FE6DA3D00F0FFCB /* FeedBackTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +97,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B37C505A2FE6DA3D00F0FFCB /* FeedBackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B37C50612FE6DA3D00F0FFCB /* Build configuration list for PBXNativeTarget "FeedBackTests" */;
+			buildPhases = (
+				B37C50572FE6DA3D00F0FFCB /* Sources */,
+				B37C50582FE6DA3D00F0FFCB /* Frameworks */,
+				B37C50592FE6DA3D00F0FFCB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B37C50602FE6DA3D00F0FFCB /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B37C505C2FE6DA3D00F0FFCB /* FeedBackTests */,
+			);
+			name = FeedBackTests;
+			packageProductDependencies = (
+			);
+			productName = FeedBackTests;
+			productReference = B37C505B2FE6DA3D00F0FFCB /* FeedBackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B3F81B892FE40D6600F9ED42 /* FeedBack */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3F81B952FE40D6800F9ED42 /* Build configuration list for PBXNativeTarget "FeedBack" */;
@@ -108,6 +156,10 @@
 				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
+					B37C505A2FE6DA3D00F0FFCB = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = B3F81B892FE40D6600F9ED42;
+					};
 					B3F81B892FE40D6600F9ED42 = {
 						CreatedOnToolsVersion = 26.5;
 					};
@@ -132,11 +184,19 @@
 			projectRoot = "";
 			targets = (
 				B3F81B892FE40D6600F9ED42 /* FeedBack */,
+				B37C505A2FE6DA3D00F0FFCB /* FeedBackTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B37C50592FE6DA3D00F0FFCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3F81B882FE40D6600F9ED42 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,6 +207,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B37C50572FE6DA3D00F0FFCB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3F81B862FE40D6600F9ED42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,7 +223,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B37C50602FE6DA3D00F0FFCB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3F81B892FE40D6600F9ED42 /* FeedBack */;
+			targetProxy = B37C505F2FE6DA3D00F0FFCB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B37C50622FE6DA3D00F0FFCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.FeedBackTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedBack.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeedBack";
+			};
+			name = Debug;
+		};
+		B37C50632FE6DA3D00F0FFCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.FeedBackTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedBack.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeedBack";
+			};
+			name = Release;
+		};
 		B3F81B932FE40D6800F9ED42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -343,6 +458,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B37C50612FE6DA3D00F0FFCB /* Build configuration list for PBXNativeTarget "FeedBackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B37C50622FE6DA3D00F0FFCB /* Debug */,
+				B37C50632FE6DA3D00F0FFCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B3F81B852FE40D6600F9ED42 /* Build configuration list for PBXProject "FeedBack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
