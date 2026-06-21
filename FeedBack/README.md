@@ -6,7 +6,7 @@ Users submit feedback through an animated mood slider; admins review all submiss
 
 ---
 
-##  Features
+## Features
 
 - **Email + Google Sign-In** authentication via Firebase Auth
 - **Role-based routing** — Users see their own feedback, Admins see everyone's
@@ -14,11 +14,12 @@ Users submit feedback through an animated mood slider; admins review all submiss
 - **Real-time persistence** with Cloud Firestore
 - **Coordinator-driven navigation** — no view ever instantiates another view directly
 - **Mood-based filtering** on the Admin dashboard
+- **100% unit-tested Domain layer** — 13 XCTest cases covering all business logic and validation, fully isolated from Firebase via mock repositories
 - **Centralized design system** (`DesignTokens`) for consistent typography, color, and spacing across every screen
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -32,7 +33,7 @@ Users submit feedback through an animated mood slider; admins review all submiss
 
 ---
 
-##  Architecture
+## Architecture
 
 This project follows **Clean Architecture** with strict unidirectional dependencies: `Presentation → Domain ← Data`. The Domain layer has zero knowledge of SwiftUI or Firebase — it only depends on `Foundation`.
 
@@ -71,7 +72,7 @@ AppCoordinator (root — listens to Firebase auth state)
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
 FeedBack/
@@ -129,11 +130,22 @@ FeedBack/
     │   └── MoodFaceView.swift          # Custom animated Shape-based face
     ├── FeedbackCardView/
     └── AuthComponents/                 # Reusable text fields, buttons
+
+FeedBackTests/
+├── UseCases/
+│   ├── SubmitFeedbackUseCaseTests.swift
+│   ├── FetchMyFeedbackUseCaseTests.swift
+│   ├── FetchAllFeedbackUseCaseTests.swift
+│   ├── SignUpUseCaseTests.swift
+│   └── LoginUseCaseTests.swift
+└── Mocks/
+    ├── MockFeedbackRepository.swift
+    └── MockAuthRepository.swift
 ```
 
 ---
 
-##  Firestore Data Model
+## Firestore Data Model
 
 ```
 users/{uid}
@@ -163,18 +175,36 @@ service cloud.firestore {
 
 ---
 
-##  Roadmap / Known Limitations
+## Testing
+
+Domain layer — **100% line coverage** via 13 XCTest unit tests using mock repositories (no live network calls, fully isolated from Firebase):
+
+| Use Case | Coverage | Tests |
+|---|---|---|
+| `SubmitFeedbackUseCase` | 100% | 3 |
+| `FetchMyFeedbackUseCase` | 100% | 1 |
+| `FetchAllFeedbackUseCase` | 100% | 2 |
+| `SignUpUseCase` | 100% | 4 |
+| `LoginUseCase` | 100% | 3 |
+
+Each use case is tested in isolation via `MockFeedbackRepository` and `MockAuthRepository`, which conform to the same `FeedbackRepository`/`AuthRepository` protocols as the real Firebase implementations — proving the Domain layer has zero hidden dependency on the network or Firebase SDK.
+
+> Views, ViewModels, Coordinators, and Firebase repository implementations are not yet covered by automated tests — see Roadmap below.
+
+---
+
+## Roadmap / Known Limitations
 
 This is an actively developed portfolio project. Transparently tracking what's left:
 
-- [ ] **Unit tests** — Domain layer (UseCases, validation logic) is structured to be fully testable in isolation but test coverage hasn't been written yet
+- [ ] **UI / ViewModel / Coordinator tests** — Domain layer is fully unit tested; Presentation and Data layers still rely on manual testing
 - [ ] **Update / Delete feedback** — currently Create + Read only; Update/Delete are planned and the repository protocol is designed to extend cleanly for them
 - [ ] **Admin role assignment** — currently self-selected at signup for demo purposes. Production version would gate this server-side via Firebase custom claims or an invite-only admin flow
 - [ ] **Pagination** — Admin feed currently fetches all documents in one call; would need cursor-based pagination at scale
 
 ---
 
-##  Getting Started
+## Getting Started
 
 1. Clone the repo
 2. Create a Firebase project, enable **Authentication** (Email/Password + Google) and **Cloud Firestore**
@@ -184,6 +214,6 @@ This is an actively developed portfolio project. Transparently tracking what's l
 
 ---
 
-##  License
+## License
 
 MIT
