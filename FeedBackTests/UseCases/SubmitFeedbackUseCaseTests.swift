@@ -8,8 +8,9 @@
 import XCTest
 @testable import FeedBack
 
+@MainActor
 final class SubmitFeedbackUseCaseTests: XCTestCase {
-
+    
     func test_execute_withEmptyComment_throwsEmptyCommentError() async {
         // Arrange
         let mockRepository = MockFeedbackRepository()

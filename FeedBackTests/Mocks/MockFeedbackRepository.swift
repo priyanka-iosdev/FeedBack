@@ -12,6 +12,7 @@ final class MockFeedbackRepository: FeedbackRepository {
     // these record what happened, so the test can check later
     var submittedFeedback: Feedback?
     var shouldThrowOnSubmit = false
+    var feedbackToReturn: [Feedback] = []
 
     func submit(_ feedback: Feedback) async throws {
         if shouldThrowOnSubmit {
@@ -21,10 +22,10 @@ final class MockFeedbackRepository: FeedbackRepository {
     }
 
     func fetchMyFeedback(userId: String) async throws -> [Feedback] {
-        return []
+        return feedbackToReturn
     }
 
     func fetchAllFeedback() async throws -> [Feedback] {
-        return []
+        return feedbackToReturn
     }
 }

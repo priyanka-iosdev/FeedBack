@@ -8,9 +8,9 @@
 import Foundation
 
 struct LoginUseCase {
-    private let authRepository: FirebaseAuthRepository
+    private let authRepository: Authrepository
     
-    init(authRepository: FirebaseAuthRepository) {
+    init(authRepository: Authrepository) {
         self.authRepository = authRepository
     }
     
