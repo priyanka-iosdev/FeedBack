@@ -111,10 +111,9 @@ FeedBack/
 │   │   ├── FeedbackDTO.swift
 │   │   └── UserDTO.swift
 │   ├── Repositories/
-│   │   ├── FirebaseAuthRepository.swift
-│   │   └── FirebaseFeedbackRepository.swift
-│   └── Mock/
-│       └── MockFeedbackRepository.swift
+│       ├── FirebaseAuthRepository.swift
+│       └── FirebaseFeedbackRepository.swift
+│  
 │
 ├── Presentation/
 │   ├── Auth/
