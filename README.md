@@ -19,6 +19,33 @@ Users submit feedback through an animated mood slider; admins review all submiss
 
 ---
 
+## 📱 Screenshots
+### SignIn & SignUp
+
+<p align="center">
+  <img src="FeedBack_Assest/Login.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/SignUp.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/GoogleLogIn.png" width="150"/>
+</p>
+
+### My FeedBack
+<p align="center">
+  <img src="FeedBack_Assest/MyFeedback.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/FeedbackBad.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/FeedbackGood.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/FeedbackNormal.png" width="150" style="margin-right: 10px;"/>
+</p>
+
+### All FeedBack (OnlyAdminView)
+<p align="center">
+  <img src="FeedBack_Assest/AllFeedback.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/AllFeedbackBad.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/AllFeedbackOk.png" width="150" style="margin-right: 10px;"/>
+  <img src="FeedBack_Assest/AllFeedbackGood.png" width="150"/>
+</p>
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
